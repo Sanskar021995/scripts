@@ -1,0 +1,134 @@
+{
+    "information": {
+        "project": "diagnostic-view-classifier",
+        "exp_name": "vit_conf_test"
+        },
+    "pipeline": "BaseClassifierPipeline",
+    "model_class": "ViT_pytorch",
+    "download_target": "data",
+    "download_and_delete": false,
+    "experiment_type": "classification",
+    "model_config": {
+        "classifiers": {
+            "n_class": 7,
+            "cls_type": "MC",
+            "pretrained": true
+        }
+    
+    },
+    "init_ckpt": "/home/ubuntu/OH/OH-Classifier-Framework-Basics/classifier_framework/saved_models/vit/weights.pt",
+    "epochs": 100,
+    "focal_loss_gamma_value": null,
+    "batch_size": 16,
+    "patience": 10,
+    "img_height": 224,
+    "image_width": 288,
+    "class_type": "MC",
+    "early_stop_criteria": "val_loss",
+    "learning_rate_schedular": "StepLR",
+    "monitor_metric": "val_loss",
+    "lr_step_size": 3,
+    "lr_gamma": 0.5,
+    "learning_rate": 0.0001,
+    "optimizer": "Adam",
+    "metric": "f1_metric",
+    "loss_function": "Multiclass_CE",
+    "focal_loss_gamma": null,
+    "weighted_loss": "epoch_weight",
+    "dataloader_class": "BaseClassifierDataset",
+    "num_workers": 4,
+    "data": {
+        "train": {
+            "path": "/home/ubuntu/OH/testing_data/first_trimester_jsons/ai-dev/classifier/model_catalog_first_trimester/dataset_1/datajsons/Nova_Presorter_MC_V2_train.json",
+            "transform": {
+                "RandomAffine": {
+                    "degrees": [
+                        -180,
+                        180
+                    ],
+                    "p": 0.3
+                },
+                "HorizontalFlip": {
+                    "p": 0.35
+                },
+                "ColorJitter": {
+                    "brightness": [
+                        0.8,
+                        1.2
+                    ],
+                    "contrast": [
+                        0.8,
+                        1.2
+                    ],
+                    "p": 0.2
+                },
+                "Motion_Blur": {
+                    "blur_limit": 49,
+                    "p": 0.3
+                },
+                "RGBToGrayscale": {
+                    "p": 1
+                },
+                "Resize": {
+                    "new_size": [
+                        224,
+                        224
+                    ],
+                    "p": 1
+                },
+                "ImageToTensor": {
+                    "p": 1
+                }
+            }
+        },
+        "valid": {
+            "path": "/home/ubuntu/OH/testing_data/first_trimester_jsons/ai-dev/classifier/model_catalog_first_trimester/dataset_1/datajsons/Nova_Presorter_MC_V2_valid.json",
+            "transform": {
+                "RGBToGrayscale": {
+                    "p": 1
+                },
+                "Resize": {
+                    "new_size": [
+                        224,
+                        224
+                    ],
+                    "p": 1
+                },
+                "ImageToTensor": {
+                    "p": 1
+                }
+            }
+        },
+        "test": {
+            "path": "/home/ubuntu/OH/testing_data/first_trimester_jsons/ai-dev/classifier/model_catalog_first_trimester/dataset_1/datajsons/Nova_Presorter_MC_V2_test.json",
+            "transform": {
+                "Resize": {
+                    "new_size": [
+                        224,
+                        224
+                    ],
+                    "p": 1
+                },
+                "ImageToTensor": {
+                    "p": 1
+                }
+            }
+        }
+    },
+    "logger": "NeptuneLogger",
+    "logger_path": null,
+    "created_by": "",
+    "reviewed_by": "",
+    "s3_data_json_links ": "",
+    "s3_raw_json_links": "",
+    "img_size": [
+        224,
+        288
+    ],
+    "status": null,
+    "root_directory": null,
+    "git_branch_name": "main",
+    "uid": null,
+    "s3_data_json_links":null,
+    "requirements_s3_url": null
+}
