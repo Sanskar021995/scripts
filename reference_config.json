@@ -43,13 +43,13 @@
             "transform": {
                 "RandomAffine": {
                     "degrees": [
-                        -180,
-                        180
+                        -30,
+                        30
                     ],
-                    "p": 0.3
+                    "p": 0.5
                 },
                 "HorizontalFlip": {
-                    "p": 0.35
+                    "p": 0.5
                 },
                 "ColorJitter": {
                     "brightness": [
@@ -60,11 +60,7 @@
                         0.8,
                         1.2
                     ],
-                    "p": 0.2
-                },
-                "Motion_Blur": {
-                    "blur_limit": 49,
-                    "p": 0.3
+                    "p": 0.5
                 },
                 "RGBToGrayscale": {
                     "p": 1
